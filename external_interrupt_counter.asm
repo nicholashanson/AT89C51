@@ -6,7 +6,6 @@ $INCLUDE (8051.MCU)
       ORG 0003H               ;interrupt vector for external interrupt 0 (P3.2)
       AJMP IP0                ;interrupt handler
 MAIN:
-      MOV SP, #60H
       SETB IT0                ;TCON bit0, interrupt tiggered by falling edge
       SETB EA                 ;IE (interrpt enable reigister bit7), enable global interrupt flag
       SETB EX0                ;IE bit0, enable external interrupt 0
