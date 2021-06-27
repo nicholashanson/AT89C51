@@ -1,6 +1,3 @@
-$NOMOD51
-$INCLUDE (8051.MCU)
-
       ORG 0000H               ;reset vector                    
       AJMP MAIN
       ORG 0003H               ;interrupt vector for external interrupt 0 (P3.2)
