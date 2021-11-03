@@ -9,14 +9,14 @@ loop:
 loop1:
       mov TH0, #0E0h
       mov TL0, #18h
-      ;B7 - EA - enable all interrupts
-      ;B6 - don't care
-      ;B5 - don't care
-      ;B4 - ES - enable serial port interrupt
-      ;B3 - ET1 - enable timer-1 interrupt
-      ;B2 - EX1 - enable external interrupt-1
-      ;B1 - ET0 - enable timer-0 interrupt
-      ;B0 - EX0 - enable external interrupt-0
+      ;IE:B7 - EA - enable all interrupts
+      ;IE:B6 - don't care
+      ;IE:B5 - don't care
+      ;IE:B4 - ES - enable serial port interrupt
+      ;IE:B3 - ET1 - enable timer-1 interrupt
+      ;IE:B2 - EX1 - enable external interrupt-1
+      ;IE:B1 - ET0 - enable timer-0 interrupt
+      ;IE:B0 - EX0 - enable external interrupt-0
       mov IE, #10000010B          ;enable CPU interrupts and interrupt for timer0
       setb TR0                    ;start timer0
       jnb TF0, $                  ;wait for timer0 to finish
@@ -28,8 +28,8 @@ loop1:
       ;if not, return to the start of loop
       ;the combination of the and the above djnz statement creates a loop of
       ;R0 x R1 = dec10 x dec50 = dec500 iterations
-      djnz R1, loop
-      setb P1.0
+      djnz R1, loop              
+      setb P1.0                  ;toggle the LSB of P1 to create a pulse   
       clr P1.0
       mov R0, #0Ah
       mov R1, #32h
