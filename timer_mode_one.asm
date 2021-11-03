@@ -1,3 +1,4 @@
+      ;reset vector address
       org 0000h
       ljmp main
       org 000Bh                                 ;timer/counter 0 interrupt vector
