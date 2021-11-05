@@ -9,13 +9,8 @@ loop:
 loop1:
       mov TH0, #0E0h
       mov TL0, #18h
-      ;IE:B7 - EA - enable all interrupts
-      ;IE:B6 - don't care
-      ;IE:B5 - don't care
-      ;IE:B4 - ES - enable serial port interrupt
-      ;IE:B3 - ET1 - enable timer-1 interrupt
-      ;IE:B2 - EX1 - enable external interrupt-1
-      ;IE:B1 - ET0 - enable timer-0 interrupt
+      ;IE:B7 - EA - enable all interrupts, IE:B6 - don't care, IE:B5 - don't care, IE:B4 - ES - enable serial port interrupt
+      ;IE:B3 - ET1 - enable timer-1 interrupt, IE:B2 - EX1 - enable external interrupt-1, IE:B1 - ET0 - enable timer-0 interrupt
       ;IE:B0 - EX0 - enable external interrupt-0
       mov IE, #10000010B          ;enable CPU interrupts and interrupt for timer0
       setb TR0                    ;start timer0
